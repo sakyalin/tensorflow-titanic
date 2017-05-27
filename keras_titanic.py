@@ -99,13 +99,13 @@ model.add(Dense(20, input_dim=train_x.shape[1]))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
 model.add(Dense(1, input_dim=20))
-model.add(Activation('softmax'))
+model.add(Activation('sigmoid'))
 
-sgd = SGD(lr=0.00000001)
+sgd = SGD(lr=0.0001)
 model.compile(optimizer=sgd,
               loss='binary_crossentropy',
               metrics=['accuracy'])
-model.fit(train_x, train_y, nb_epoch=20, batch_size=32)
+model.fit(train_x, train_y, nb_epoch=12000, batch_size=32)
 score = model.evaluate(test_x, test_y)
 print("")
 print("Test loss:{0}".format(score[0]))
